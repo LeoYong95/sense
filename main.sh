@@ -7,4 +7,10 @@
 
 source data/Data_gen.sh
 
-data_gen
+source data/collecting_data.sh
+
+
+get_datafile_name
+
+get_data
+

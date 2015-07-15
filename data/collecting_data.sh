@@ -2,33 +2,43 @@
 #
 #
 #shellscript testing
-
 #filename
+source data/variables.sh
 
-filename = date +%D
-
-
-echo filename
-
-export filename
-#start the collection of data
-
-#display timer
 
 #collect data from arduino
-cat /dev/ttyACM0 > ${filename}.csv # here is hard code ##fix me ##
+ # here is hard code ##fix me ##
 
 #stop the collection of data
 
 #start gnuplot
+function get_data()
+{
+count=0 ;
+if [ count=0 ]; then
+{
+for (( count = 0 ; count < 60 ; count++ ))
+do
+
+cat /dev/ttyACM0
+sleep 1
+
+done
+
+} >$data_path/$filename.csv
+
+fi
+
+plot_data
+}
+
+function plot_data()
+{
 
 gnuplot<<-EOF
 
-set terminal png
-set output '${filename}.png'
-plot '${filename}.csv';
-exit
+plot '$data_path/$filename.csv'
 
 EOF
 
-
+}

@@ -4,6 +4,7 @@
 echo "Hello world"
 
 i=0
+
 export i
 
 function data_gen()

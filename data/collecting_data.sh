@@ -7,6 +7,7 @@
 
 filename = date +%D
 
+
 echo filename
 
 export filename

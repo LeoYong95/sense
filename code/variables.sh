@@ -20,6 +20,6 @@ read filename
 
 export filename
 
-file collected_data/$filename.csv;
+
 }
 

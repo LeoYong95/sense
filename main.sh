@@ -5,12 +5,11 @@
 
 #including script to here
 
-source data/Data_gen.sh
+source code/Data_gen.sh
 
-source data/collecting_data.sh
+source code/collecting_data.sh
 
 
 get_datafile_name
 
-get_data
 

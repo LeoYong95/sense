@@ -3,33 +3,20 @@
 #
 #shellscript testing
 #filename
-source data/variables.sh
+source code/variables.sh
 
 
 #collect data from arduino
  # here is hard code ##fix me ##
 
-#stop the collection of data
-
-#start gnuplot
+#collecting data to a CSV file (Within a certain time frame)
 function get_data()
 {
-count=0 ;
-if [ count=0 ]; then
-{
-for (( count = 0 ; count < 60 ; count++ ))
-do
+echo "time interval for data collection : $time "
+echo "data collected to : $data_path/$filename.csv "
 
-cat /dev/ttyACM0
-sleep 1
+cat /dev/ttyACM0 >$data_path/$filename.csv
 
-done
-
-} >$data_path/$filename.csv
-
-fi
-
-plot_data
 }
 
 function plot_data()

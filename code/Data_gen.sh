@@ -3,7 +3,7 @@
 ####<FIX ME> change to reading data from serial port
 
 #Generating data to be ploted
-source data/variables.sh
+source code/variables.sh
 
 echo "Hello world"
 

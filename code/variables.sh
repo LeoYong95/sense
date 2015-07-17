@@ -6,7 +6,7 @@
 #path
 
 
-data_path="collected_data" ;
+data_path="data" ;
 
 export data_path ;
 
@@ -20,6 +20,16 @@ read filename
 
 export filename
 
-
+get_data_time
 }
 
+function get_data_time()
+{
+echo "========================================================="
+echo "What is the time interval of data collection?? (in seconds)"
+
+read time
+
+export time
+
+}

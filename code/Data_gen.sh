@@ -1,8 +1,8 @@
 #!/bin/bash
-
-####<FIX ME> change to reading data from serial port
-
+#Auth: Leo Yong
+#
 #Generating data to be ploted
+
 source code/variables.sh
 
 echo "Hello world"

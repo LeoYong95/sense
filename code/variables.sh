@@ -1,12 +1,13 @@
 #!/bin/bash
+#Auth: Leo Yong
+#
 #This file is used to hold variables whic collecting data
 
 
 
-#path
-
-
+#universal variables
 data_path="data" ;
+time_now= `date +%s`;
 
 export data_path ;
 

@@ -7,7 +7,7 @@
 
 #universal variables
 data_path="data" ;
-time_now= `date +%s`;
+
 
 export data_path ;
 

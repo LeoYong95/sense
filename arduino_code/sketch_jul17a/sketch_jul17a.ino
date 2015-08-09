@@ -12,8 +12,8 @@ void loop()
  
  for(int i=0 ; i<100 ; i++)
  {
-  Serial.println(i);
-  Serial.println(",");
-  delay(500);
+  Serial.print(i);
+  Serial.print("\n");
+  delay(100);
  }
 }

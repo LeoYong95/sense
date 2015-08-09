@@ -23,7 +23,6 @@ do
 
 cat /dev/ttyACM0
 
-sleep 0.1
 #transfer data to a csv file
 done >$data_path/$filename.csv
 

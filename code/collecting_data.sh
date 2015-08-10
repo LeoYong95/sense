@@ -21,10 +21,18 @@ end_time=$((`date +%s` + $time_int));
 while [ "$end_time" -ne `date +%s` ] ;
 do
 
-cat /dev/ttyACM0
+sc -s 9600 ttyACM0
 
 #transfer data to a csv file
 done >$data_path/$filename.csv
+
+
+kill -INT $$
+#stop getting data
+#if [ "$end_time" -eq `date +%s` ]
+#then
+
+
 
 }
 # plot graph

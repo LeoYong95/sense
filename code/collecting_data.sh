@@ -13,26 +13,20 @@ function get_data()
 echo "time interval for data collection : $time "
 echo "data collected to : $data_path/$filename.csv "
 
+#setting up Serial Port
+stty -F /dev/ttyACM0 -a
+
 time_int=$(($time))
 #start a timer
 end_time=$((`date +%s` + $time_int));
 
-#print data on command
 while [ "$end_time" -ne `date +%s` ] ;
 do
 
-sc -s 9600 ttyACM0
+cat</dev/ttyACM0
 
 #transfer data to a csv file
 done >$data_path/$filename.csv
-
-
-kill -INT $$
-#stop getting data
-#if [ "$end_time" -eq `date +%s` ]
-#then
-
-
 
 }
 # plot graph

@@ -1,7 +1,7 @@
 // this is a simple program to generate data
 // data transmitted via serial port.
 // 
-int msg;
+
 void setup()
 {
  Serial.begin(9600); 
@@ -17,14 +17,4 @@ void loop()
   Serial.print("\n");
   delay(100);
  }
- 
- if (Serial.available() > 0)
- {
-   msg = Serial.read();
-   if (msg = 0 )
-   {
-     Serial.end();
-   }
- }
- 
 }

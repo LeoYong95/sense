@@ -14,7 +14,7 @@ echo "time interval for data collection : $time "
 echo "data collected to : $data_path/$filename.csv "
 
 #setting up Serial Port
-stty -F /dev/ttyACM0 -a
+stty -F /dev/ttyACM0 cr0
 
 time_int=$(($time))
 #start a timer
@@ -23,10 +23,20 @@ end_time=$((`date +%s` + $time_int));
 while [ "$end_time" -ne `date +%s` ] ;
 do
 
-cat</dev/ttyACM0
+cat /dev/ttyACM0
 
 #transfer data to a csv file
 done >$data_path/$filename.csv
+
+
+#call when time is up
+if [ "$end_time" -eq `date +%s` ]
+then
+
+echo "The end of collecting data"
+
+fi
+
 
 }
 # plot graph

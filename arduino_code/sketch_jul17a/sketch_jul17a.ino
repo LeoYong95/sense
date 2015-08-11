@@ -5,50 +5,58 @@
 //-----------List down the variables
 int data [500];
 int index =0;
-int duration = 100 ;
-
+int increment;
+int updateinterval;
+int updateendtime;
+int endtime;
 //read sensor (Now just generate Data)
 class Sensor
 {
+  
   public:
-  unsigned long previousTime;
-  unsigned long currentTime;
-  unsigned long timerTime;
+  unsigned long lastupdate;
+  unsigned long timer;
   int sensorVal;
   
-  Sensor(int duration)
+  Sensor(int interval, int endtime)
   {
     //-------------set variables value
-    previousTime = 0;
+    updateinterval = interval;
+    updateendtime =endtime;
     sensorVal =0;
-  };
-  
+    increment =1;
+    timer = millis();
+  }
+
   void update()
   {
-    currentTime = millis();
-    //timerTime = millis() + duration*1000;
-    
     //---------------call every 0.1 sec
-    if ( currentTime -previousTime >=100)
+    if((millis() -lastupdate) > updateinterval)
     {
       //loop of data here
-      previousTime = currentTime;
-      sensorVal += 1;
-      index += 1 ;
-      Serial.println(sensorVal);
+     lastupdate = millis();
+      sensorVal += increment;
+      index += increment ;
       data [index] =sensorVal;
-      
-     //WWhen the time is up
-      if (currentTime >= duration*1000)
-    {
-      data[index+1] = '\0'; //terminate the string
-      Serial.println("Data End");
-      
+      Serial.println(sensorVal);
+    }
+    
   }
+  
+  
+  void kill()
+  {
+    if ( (millis()- endtime) > updateendtime*1000)
+    {
+      data [index] = '\0';
+      Serial.println("The end of data collection");
+      endtime = millis();
+      Serial.end();
     }
   }
 };
 
+Sensor sample(100, 10);
 
 void setup()
 {
@@ -59,8 +67,8 @@ void setup()
  
 void loop()
 {
-  Sensor simple(Serial.read());
   
-   
-   simple.update();
+  sample.update();
+  sample.kill();
+
 }

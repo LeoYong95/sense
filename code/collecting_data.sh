@@ -33,7 +33,7 @@ done >$data_path/$filename.csv
 if [ "$end_time" -eq `date +%s` ]
 then
 
-echo "The end of collecting data"
+echo "The end of collecting data" >
 
 fi
 

@@ -6,40 +6,20 @@
 
 source code/variables.sh
 
-#collecting data to a CSV file (Within a certain time frame)
+#------------------collecting data to a CSV file (Within a certain time frame)
 function get_data()
 {
-#report
-echo "time interval for data collection : $time "
-echo "data collected to : $data_path/$filename.csv "
 
-#setting up Serial Port
-stty -F /dev/ttyACM0 cr0
+#------------------setup serial
+sc -s 9600 ttyACM0 >$data_path/$filename.csv
 
-time_int=$(($time))
-#start a timer
-end_time=$((`date +%s` + $time_int));
-
-while [ "$end_time" -ne `date +%s` ] ;
-do
-
-cat /dev/ttyACM0
-
-#transfer data to a csv file
-done >$data_path/$filename.csv
-
-
-#call when time is up
-if [ "$end_time" -eq `date +%s` ]
-then
-
-echo "The end of collecting data" >
-
-fi
-
+exit 0;
 
 }
-# plot graph
+
+#-------The processing of data needed to remove (char) <fix me>
+
+#--------------------plot graph<fix me>
 function plot_data()
 {
 

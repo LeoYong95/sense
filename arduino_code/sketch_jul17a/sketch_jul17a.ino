@@ -1,3 +1,5 @@
+#include <SoftwareSerial.h>
+
 /* this is a simplpe code to read sensor and send it over serial to the computer
  
  This have time function that allow user to:
@@ -39,6 +41,13 @@ class Sensor
     increment =1;
     
   }
+  
+//--------------setup the Serial
+void Setup()
+{
+   Serial.begin(9600);
+  
+}
 
 //--------------call this function for every interval
   void update()
@@ -58,28 +67,29 @@ class Sensor
 //------------call this function for every data collection  
   void kill()
   {
-    if ( (millis()- endtime) > updateendtime*1000)
+    if ( (millis()- endtime) > updateendtime*1000)//-----------Updateendtime is in seconds (convert to milliseconds)
     {
       data [index] = '\0';
       Serial.println("The end of data collection");
+      Serial.println("Close the terminal to end this session of data collection.")
       endtime = millis();
       Serial.end();
     }
   }
 };
 
+//--------let the duration for data be 10s and interval of data be 0.1s
 Sensor sample(100, 10);
 
 void setup()
 {
- Serial.begin(9600); 
-
+   sample.Setup();
+  
 }
- 
- 
+
 void loop()
 {
-  
+ 
   sample.update();
   sample.kill();
 

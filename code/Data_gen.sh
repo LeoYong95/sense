@@ -11,7 +11,7 @@ i=0
 export i
 
 
-#Function that generate data....
+#-------------------Function that generate data
 function data_gen()
 {
 

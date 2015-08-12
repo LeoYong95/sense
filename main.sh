@@ -10,6 +10,8 @@ source code/Data_gen.sh
 source code/collecting_data.sh
 
 
+#------------------called out the function
 get_datafile_name
 
 get_data
+

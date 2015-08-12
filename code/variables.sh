@@ -5,12 +5,13 @@
 
 
 
-#universal variables
+#-------------------universal variables
 data_path="data" ;
 
 
 export data_path ;
 
+#------------------get name for data file
 function get_datafile_name()
 {
 
@@ -21,9 +22,10 @@ read filename
 
 export filename
 
-get_data_time
+
 }
 
+#-----------------get duration for data collection
 function get_data_time()
 {
 echo "========================================================="
